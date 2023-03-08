@@ -7,6 +7,11 @@ public class PlayerController : MonoBehaviour
     private CharacterController _controller;
     [SerializeField] private float _speed;
 
+    //Vector al que se mueve la caja
+    public static Vector3Int ToMoveVector;
+    
+
+
     //Obtenemos el character controller para aplicar el movimiento despues
     private void Start()
     {
@@ -35,4 +40,6 @@ public class PlayerController : MonoBehaviour
     {
         transform.LookAt(transform.position+MoveVector());
     }
+
+    
 }
