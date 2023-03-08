@@ -7,32 +7,32 @@ public class PlayerController : MonoBehaviour
     private CharacterController _controller;
     [SerializeField] private float _speed;
 
+    //Obtenemos el character controller para aplicar el movimiento despues
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
     }
+    //Metemos en el update la funcion del movimiento y la rotacion para que se actualice en cuanto las pulsamos
     private void Update()
     {
         MovementAndRotation();
     }
-
+    //Juntamos nuestras dos funciones de rotacion y movimiento
     private void MovementAndRotation()
     {
         _controller.Move(MoveVector());
-        transform.rotation = MouseRotation();
+        Rotation();
     }
-
-
+    //Detectamos los inputs del teclado para que el personaje se mueva y devolvemos un vector con sus valores junto con la velocidad
     private Vector3 MoveVector()
     {
         Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         return movement* _speed* Time.deltaTime;
     }
-
-    private Quaternion MouseRotation()
+    //Hacemos que el forward del personaje mire a la posicion a la que nos estamos desplazando 
+    private void Rotation()
     {
-        Quaternion rotation = Quaternion.Euler(Mathf.Clamp(transform.rotation.x+Input.GetAxis("Mouse Y"),-355,355), Mathf.Clamp(transform.rotation.y+Input.GetAxis("Mouse X"),-90,90),0);
-        return rotation;
+        transform.LookAt(transform.position+MoveVector());
     }
 }
