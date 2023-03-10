@@ -12,10 +12,14 @@ public class CubeBehaviour : MonoBehaviour
     private int undoChances = 3;
     public int moveChances = 1;
     public static List<Command> OldActions = new List<Command>();
+
+    public GameObject winCanvas;
+    Observable cubeObservable = new Observable();
     //Para mantener la instancia del cubo intacta nos aseguramos preguntando si es nula y diferente a este script
     //Este metodo de instanciar clases es el conocido como Singleton
     public void Awake()
     {
+        winCanvas.SetActive(false);
         if (cubeInstance!=null && cubeInstance != this)
         {
             Destroy(this);
@@ -33,6 +37,9 @@ public class CubeBehaviour : MonoBehaviour
         ButtonA = new MoveLeft();
         ButtonD = new MoveRight();
         ButtonZ = new UndoCommand();
+
+        EndCube endCube = new EndCube(winCanvas);
+        cubeObservable.AddObserver(endCube);
     }
 
     private void Update()
@@ -84,6 +91,17 @@ public class CubeBehaviour : MonoBehaviour
                 ButtonZ.Execute(cubeInstance.transform, ButtonZ);
                 canMove = false;
                 PlayerController.instance.gameObject.GetComponent<CharacterController>().enabled = true;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "FinalCube")
+        {
+            if (transform.position == other.transform.position)
+            {
+                cubeObservable.Notify();
             }
         }
     }
