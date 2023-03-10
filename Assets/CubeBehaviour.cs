@@ -9,7 +9,8 @@ public class CubeBehaviour : MonoBehaviour
     public static bool canMove = false;
 
     private Command ButtonW, ButtonD, ButtonA, ButtonZ;
-
+    private int undoChances = 3;
+    public int moveChances = 1;
     public static List<Command> OldActions = new List<Command>();
     //Para mantener la instancia del cubo intacta nos aseguramos preguntando si es nula y diferente a este script
     //Este metodo de instanciar clases es el conocido como Singleton
@@ -47,19 +48,43 @@ public class CubeBehaviour : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            ButtonW.Execute(cubeInstance.transform, ButtonW);
+            if (moveChances > 0)
+            {
+                moveChances--;
+                ButtonW.Execute(cubeInstance.transform, ButtonW);
+                canMove = false;
+                PlayerController.instance.gameObject.GetComponent<CharacterController>().enabled = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            ButtonD.Execute(cubeInstance.transform, ButtonD);
+            if (moveChances > 0)
+            {
+                moveChances--;
+                ButtonD.Execute(cubeInstance.transform, ButtonD);
+                canMove = false;
+                PlayerController.instance.gameObject.GetComponent<CharacterController>().enabled = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            ButtonA.Execute(cubeInstance.transform, ButtonA);
+            if (moveChances > 0)
+            {
+                moveChances--;
+                ButtonA.Execute(cubeInstance.transform, ButtonA);
+                canMove = false;
+                PlayerController.instance.gameObject.GetComponent<CharacterController>().enabled = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            ButtonZ.Execute(cubeInstance.transform, ButtonZ);
+            if (undoChances > 0)
+            {
+                undoChances--;
+                ButtonZ.Execute(cubeInstance.transform, ButtonZ);
+                canMove = false;
+                PlayerController.instance.gameObject.GetComponent<CharacterController>().enabled = true;
+            }
         }
     }
 

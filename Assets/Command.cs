@@ -24,13 +24,13 @@ public class MoveForward : Command
     //Funcion específica dentro de este comando que deshace la función de ejecutar del mismo
     public override void Undo(Transform objectToMove)
     {
-        objectToMove.Translate(-objectToMove.forward * moveDistance);
+        objectToMove.Translate(-objectToMove.forward * moveDistance,Space.World);
     }
 
     //Funcion específica de este comando que dice como ha de moverse el objeto al que queremos aplicar este patrón
     public override void Move(Transform objectToMove)
     {
-        objectToMove.Translate(objectToMove.forward * moveDistance);
+        objectToMove.Translate(objectToMove.forward * moveDistance, Space.World);
     }
 }
 
@@ -46,13 +46,13 @@ public class MoveLeft : Command
     //Funcion específica dentro de este comando que deshace la función de ejecutar del mismo
     public override void Undo(Transform objectToMove)
     {
-        objectToMove.Translate(objectToMove.right * moveDistance);
+        objectToMove.Translate(objectToMove.right * moveDistance, Space.World);
     }
 
     //Funcion específica de este comando que dice como ha de moverse el objeto al que queremos aplicar este patrón
     public override void Move(Transform objectToMove)
     {
-        objectToMove.Translate(-objectToMove.right * moveDistance);
+        objectToMove.Translate(-objectToMove.right * moveDistance,Space.World);
     }
 }
 
@@ -68,13 +68,13 @@ public class MoveRight : Command
     //Funcion específica dentro de este comando que deshace la función de ejecutar del mismo
     public override void Undo(Transform objectToMove)
     {
-        objectToMove.Translate(-objectToMove.right * moveDistance);
+        objectToMove.Translate(-objectToMove.right * moveDistance, Space.World);
     }
 
     //Funcion específica de este comando que dice como ha de moverse el objeto al que queremos aplicar este patrón
     public override void Move(Transform objectToMove)
     {
-        objectToMove.Translate(objectToMove.right * moveDistance);
+        objectToMove.Translate(objectToMove.right * moveDistance, Space.World);
     }
 }
 

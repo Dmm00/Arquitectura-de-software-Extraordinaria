@@ -4,12 +4,27 @@ using UnityEngine;
 
 public class RepositionManager : MonoBehaviour
 {
+    [SerializeField] private GameObject controlsCanvas;
     [SerializeField] private Transform _oppositeCollider;
     [SerializeField] private Transform _box;
+
+    
+
+    private void Awake()
+    {
+        controlsCanvas.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            CubeBehaviour.cubeInstance.moveChances = 1;
+            controlsCanvas.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                other.GetComponent<CharacterController>().enabled = false;
+                CubeBehaviour.canMove = true;
+            }
             _box.transform.LookAt(_oppositeCollider);
         }
     }
@@ -18,7 +33,13 @@ public class RepositionManager : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            CubeBehaviour.canMove = true;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                controlsCanvas.SetActive(false);
+                other.GetComponent<CharacterController>().enabled = false;
+                CubeBehaviour.canMove = true;
+            }
+            
         }
     }
 
@@ -26,7 +47,9 @@ public class RepositionManager : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            CubeBehaviour.canMove = false;
+            controlsCanvas.SetActive(false);
         }
     }
+
+
 }

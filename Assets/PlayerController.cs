@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance { get; set; }
+
     private CharacterController _controller;
     [SerializeField] private float _speed;
 
-    //Vector al que se mueve la caja
-    public static Vector3Int ToMoveVector;
     
-
 
     //Obtenemos el character controller para aplicar el movimiento despues
     private void Start()
     {
+        if(instance!=null && instance != this)
+        {
+            Destroy(instance);
+        }
+        else
+        {
+            instance = this;
+        }
         _controller = GetComponent<CharacterController>();
     }
     //Metemos en el update la funcion del movimiento y la rotacion para que se actualice en cuanto las pulsamos
