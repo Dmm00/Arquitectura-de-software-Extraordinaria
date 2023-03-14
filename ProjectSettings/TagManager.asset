@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - FinalCube
+  - Limite
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Limits
   - Water
   - UI
-  - 
+  - Cube
   - 
   - 
   - 

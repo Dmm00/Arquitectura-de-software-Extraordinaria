@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7246035474694414590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,7 +43,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -62,6 +62,7 @@ MonoBehaviour:
   controlsCanvas: {fileID: 0}
   _oppositeCollider: {fileID: 7246035475937942458}
   _box: {fileID: 7246035475471361511}
+  SideOfBox: Forward
 --- !u!1 &7246035475471361515
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,6 +177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88e4a2b433bb03743b9f8f8fbb76ae11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
+  canRight: 0
+  canLeft: 0
+  canForward: 0
   moveChances: 1
   winCanvas: {fileID: 0}
 --- !u!1 &7246035475475184096
@@ -204,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7246035475475184096}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -0.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -221,7 +226,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -240,6 +245,7 @@ MonoBehaviour:
   controlsCanvas: {fileID: 0}
   _oppositeCollider: {fileID: 7246035476286481835}
   _box: {fileID: 7246035475471361511}
+  SideOfBox: Left
 --- !u!1 &7246035475937942459
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7246035475937942459}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -283,7 +289,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -302,6 +308,7 @@ MonoBehaviour:
   controlsCanvas: {fileID: 0}
   _oppositeCollider: {fileID: 7246035474694414585}
   _box: {fileID: 7246035475471361511}
+  SideOfBox: Back
 --- !u!1 &7246035476286481832
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7246035476286481832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -345,7 +352,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -364,3 +371,4 @@ MonoBehaviour:
   controlsCanvas: {fileID: 0}
   _oppositeCollider: {fileID: 7246035475475184099}
   _box: {fileID: 7246035475471361511}
+  SideOfBox: Right
